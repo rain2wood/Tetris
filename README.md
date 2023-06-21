@@ -13,4 +13,5 @@ python main.py
 ### C / T ###
 technology
 
+### Screenshot ###
 ![ss](.github/ss.jpg)
