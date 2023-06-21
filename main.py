@@ -48,7 +48,7 @@ TETROMINO_COLORS = [
 # Initialize Pygame
 pygame.init()
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-pygame.display.set_caption("2048 Tetris")
+pygame.display.set_caption("Tetris")
 clock = pygame.time.Clock()
 font = pygame.font.SysFont(None, FONT_SIZE)
 
