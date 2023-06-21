@@ -10,6 +10,16 @@ GRID_HEIGHT = SCREEN_HEIGHT // BLOCK_SIZE
 FONT_SIZE = 36
 FONT_COLOR = (255, 255, 255)
 FPS = 60
+TITLE_FONT_SIZE = 48
+TEXT_FONT_SIZE = 24
+
+# Colors 
+WHITE = (255, 255, 255)
+GRAY = (128, 128, 128)
+BLUE = (0, 0, 255)
+GREEN = (0, 255, 0)
+RED = (255, 0, 0)
+
 TETROMINOS = [
     [[1, 1, 1],
      [0, 1, 0]],
@@ -113,11 +123,34 @@ def remove_complete_rows():
         else:
             row_index -= 1
 
+def draw_title_screen():
+    title_font = pygame.font.Font(None, TITLE_FONT_SIZE)
+    text_font = pygame.font.Font(None, TEXT_FONT_SIZE)
+    title_text = title_font.render("Pygame Tetris", True, WHITE)
+    start_text = text_font.render("Press SPACE to start", True, WHITE)
+    screen.blit(title_text, (SCREEN_WIDTH/2 - title_text.get_width()/2, SCREEN_HEIGHT/4))
+    screen.blit(start_text, (SCREEN_WIDTH/2 - start_text.get_width()/2, SCREEN_HEIGHT/2))
+
 # Main game loop
 tetromino, color = get_random_tetromino()
 tetromino_x = GRID_WIDTH // 2 - len(tetromino[0]) // 2
 tetromino_y = 0
 move_delay = 0
+
+
+draw_title_screen()
+pygame.display.update()
+start = False
+
+# Wait for user to start game
+while True:
+    for event in pygame.event.get():
+        if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
+            start = True
+            break
+    if start:
+            break
+
 while not game_over:
     # Handle events
     for event in pygame.event.get():
